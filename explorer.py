@@ -11,7 +11,12 @@ def show_menu():
           break
         elif choose == '1':
          city = input("Tell me your city: ")
-
+         result = wea.get_forecast(city)
+         if result:
+           print(f"Temperature: {result['temperature_2m']}°C")
+           print(f"Wind: {result['wind_speed_10m']} km/h")
+         else:
+           print("Write fucking city")
         elif choose == '2':
          setup, punchline = joke.get_joke()
          print(setup)
