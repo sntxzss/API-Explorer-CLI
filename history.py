@@ -5,7 +5,7 @@ def save_history(type: str, query: str,result):
     try:
         with open("history.json", "r") as f:
             history = json.load(f)
-    except FileNotFoundError:
+    except (FileNotFoundError, json.JSONDecodeError):
         history = []
     
     entry = {
@@ -24,5 +24,5 @@ def get_history():
         with open("history.json", "r") as f:
             history = json.load(f)
         return history[-10:] if len(history) > 10 else history
-    except FileNotFoundError:
+    except (FileNotFoundError, json.JSONDecodeError):
         return []

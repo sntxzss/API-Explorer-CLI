@@ -8,11 +8,11 @@ def show_menu():
         print("2. Joke")
         print("3. History")
         print("0. Exit")
-        choose = input("Choose: ")
+        choose = input("Choose: ").strip()
         if choose == '0':
             break
         elif choose == '1':
-            city = input("Tell me your city: ")
+            city = input("Tell me your city: ").strip()
             result = wea.get_forecast(city)
             if result and "error" not in result:
                 print(f"Temperature: {result['temperature_2m']}°C")
@@ -29,7 +29,7 @@ def show_menu():
             else:
                 setup, punchline = result
                 print(setup)
-                wh = input("Wanna hear punchline? y/n ").lower()
+                wh = input("Wanna hear punchline? y/n ").strip().lower()
                 if wh == 'y':
                     print(punchline)
                 else:
@@ -46,3 +46,6 @@ def show_menu():
                 print("No history yet")
         else:
             print("No such choice.")
+
+if __name__ == "__main__":
+    show_menu()
