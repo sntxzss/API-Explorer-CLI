@@ -21,7 +21,7 @@ def show_menu():
             elif result and "error" in result:
                 print(result["error"])
             else:
-                print("Місто не знайдено")
+                print("Wrong city")
         elif choose == '2':
             result = joke.get_joke()
             if isinstance(result, dict) and "error" in result:
